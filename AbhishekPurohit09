@@ -1,0 +1,228 @@
+	
+ 					                                              Assignment 1 
+                                                  	  Operating Systems
+
+
+ 
+Q1.    What are the main functions of an operating system? 
+Sol. An operating system is a program that acts as an interface between the user and the computer hardware and controls the execution of all kinds of programs.
+Following are some of the important functions of an operating system.
+Memory management
+•	Processor management
+•	Device management
+•	File management
+•	Security
+•	Control over system performance
+•	Job accounting
+•	Error detecting aids
+•	Coordination between other software and user
+
+
+Q2.    What does the CPU do when it has no program to execute? 
+Sol.
+The CPU is in a halt state. That is, it stops fetching instructions and waits for an interrupt. In normal operation, CPUs continually fetch and execute new instructions, usually from sequential memory locations, with the occasional jump to a new location. Interrupts cause the CPU to save its state, jump to a different location and start doing something completely different. In a halt state, the CPU responds to interrupts but doesn't do anything else. 
+
+In a typical desktop or laptop system, the operating system will detect there are no processes needing to run, schedule an interrupt to occur a few milliseconds in the future and then run a special HALT instruction, at which point the CPU stops fetching new instructions. In older CPUs, there was no HALT instruction and they would just execute a busy loop, but this doesn't happen now as its very power inefficient.
+
+Exactly how the halt state is implemented varies. The CPU may just sit with all its circuitry alive but doing nothing, but usually at least the clock will be shut off to everything except the unit responsible for handling interrupts, which will then wake everything up.  In low power processors, the system may turn off the power to the halted CPU and rely on some external circuit to turn it back on if an interrrupt comes in.
+
+ 
+
+Q3.  Int main() 
+{ 
+int i, int j; 
+scanf(“%d”, &i); 
+for(j=0; j<i; j++) 
+{ 
+sum= j+i; 
+} 
+printf(“%d”, sum); 
+exit(0); 
+} 
+In the above problem, differentiate each and every line of code as CPU execution or I/O execution.
+
+Sol.
+
+In the following program          
+                int main()                  // CPU execution
+              { 
+int i, int j;                      //CPU execution                
+              scanf(“%d”, &i);          //  I/O execution
+for(j=0; j<i; j++) 
+              { 	
+sum= j+i; 
+} 
+               printf(“%d”, sum);      // I/O execution
+exit(0); }                          // CPU execution
+
+
+
+
+Q4. Difference between Multi-programming, Multi-tasking and Multi-processing? 
+
+Sol.
+Multiprogramming
+
+Multiprogramming keeps several programs in main memory at the same time and execute them concurrently
+
+ Only one program at a time is able to get the CPU for executing its instructions
+It utilizes single cpu
+In multiprogramming context switching takes place
+In multiprogramming more time is taken to process the jobs
+It is comparatively less efficient then multiprocessing
+
+Multiprocessing
+Multiprocessing refers to processing of multiple processes at same time by multiple cpu
+multiprocessing refers to the hardware (i.e., the CPU units) rather than the software (i.e., running processes).
+Multiprocessing utilizes multiple CPU
+Multiprocessing  permits  parallel processing.
+In Multiprocessing less time is taken to process the jobs.
+It facilitates much efficient utilization of devices of computer system.
+
+Multitasking
+Multitasking has the same meaning of multiprogramming but in a more general sense, as it refers to having multiple (programs, processes, tasks, threads) running at the same time. 
+In multitasking the CPU is executing one task only while other tasks waiting their turn. The illusion of parallelism is achieved when the CPU is reassigned to another task (i.e. process or thread context switching).
+There are subtle differences between multitasking and multiprogramming. A task in a multitasking operating system is not a whole application program but it can also refer to a “thread of execution” when one process is divided into sub-tasks
+Both multiprogramming and multitasking operating systems are (CPU) time sharing systems. However, while in multiprogramming (older OSs) one program as a whole keeps running until it blocks, in multitasking (modern OSs) time sharing is best manifested because each running process takes only a fair quantum of the CPU time.
+
+ 
+Q5. Difference between a program and a process? 
+Sol.
+Program
+- A program is a set of instructions that are to perform a designated task, where as the process is an operation which takes the given instructions and perform the manipulations as per the code, called ‘execution of instructions’. A process is entirely dependent of a ‘program’.
+
+Process
+- A process is a module that executes modules concurrently. They are separate loadable modules. Where as the program perform the tasks directly relating to an operation of a user like word processing, executing presentation software etc.
+
+
+
+
+ 
+Q6. Categorize the following state: NEW, READY, RUN, BLOCK, TERMINATE, SUSPEND READY, SUSPEND  WAIT as main memory or secondary memory. 
+Sol.
+
+NEW: secondary memory
+ READY:   main memory
+ RUN:   main memory
+ BLOCK:  main memory
+ TERMINATE: secondary memory
+ SUSPEND READY: secondary memory 
+SUSPEND WAIT : secondary memory
+
+
+
+
+
+
+
+
+
+
+Q7.  Define the term context switch with a appropriate example. 
+
+Sol.
+
+ Context switching is a procedure of storing the state of an active process for the CPU when it has to start executing a new one. Effective context switching is critical if a computer is to provide user-friendly multitasking.  In a CPU, the term "context" refers to the data in the registers and program counter at a specific moment in time. A register holds the current CPU instruction. A program counter, also known as an instruction address register, is a small amount of fast memory that holds the address of the instruction to be executed immediately after the current one. A context switch can be performed entirely in hardware (physical media). Older CPUs, such as those in the x86 series, do it that way. However, most modern CPUs perform context switches by means of software(programming). A modern CPU can perform hundreds of context switches per second. Therefore, the user gets the impression that the computer is performing multiple tasks in a parallel fashion, when the CPU actually alternates or rotates between or among the tasks at a high rate of speed.
+Q8. Consider a system with ‘n’ CPU processors and ‘m’ processes, then answer the following queries regarding minimum and maximum number of processes: 
+Minimum 	Maximum 
+Ready 	? 	? 
+Running 	? 	? 
+Block 	? 	? 
+
+
+Sol.
+	Minimum	Maximum
+Ready	0	M
+Running	0	N
+Block	0	M
+
+
+
+
+
+Q9. Define the responsibilities of: Short term scheduler, Middle term scheduler and Long term scheduler. 
+Sol.
+
+Schedulers are special system software which handle process scheduling in various ways. Their main task is to select the jobs to be submitted into the system and to decide which process to run. Schedulers are of three types −
+•	Long-Term Scheduler
+•	Short-Term Scheduler
+•	Medium-Term Scheduler
+
+Long Term Scheduler :
+It is also called a Job scheduler. A long-term scheduler determines which programs are admitted to the system for processing. It selects processes from the queue and loads them into memory for execution. Process loads into the memory for CPU scheduling
+Short Term Scheduler :
+It is also called as CPU scheduler. Its main objective is to increase system performance in accordance with the chosen set of criteria. It is the change of ready state to running state of the process. CPU scheduler selects a process among the processes that are ready to execute and allocates CPU to one of them.
+Short-term schedulers, also known as dispatchers, make the decision of which process to execute next. Short-term schedulers are faster than long-term schedulers.
+
+Medium Term Scheduler :
+Medium-term scheduling is a part of swapping. It removes the processes from the memory. It reduces the degree of multiprogramming. The medium-term scheduler is in-charge of handling the swapped out-processes.
+A running process may become suspended if it makes an I/O request. A suspended processes cannot make any progress towards completion. In this condition, to remove the process from memory and make space for other processes, the suspended process is moved to the secondary storage. This process is called swapping, and the process is said to be swapped out or rolled out. Swapping may be necessary to improve the process mix.
+
+Q10. State some principles of giving a better user interactivity. 
+Sol.
+
+a)	LEARNABILITY:
+ Another very important core principle is the ability to easily learn and use an interface after    using it for the first time. 
+b)	 CONSISTENCY:
+As well as matching people’s expectations through terminology, layout and interactions the way in which they are used should be consistent throughout the process and between related applications. By maintaining consistency users learn more quickly, this can be achieved by re-applying in one part of the application their prior experiences from another.
+c)	 MATCH USER EXPERIENCE AND EXPECTATION:
+By matching the sequence of steps, layout of information and terminology used with the expectations and prior experiences of the user, the friction and discomfort of learning a new system will be reduced.
+
+
+
+
+
+
+Q11. Why can’t a virus just take hold of the system and keep running? Think and try to 
+Sol.
+
+Virus programs out there in the Internet are not that smart to get into a computer hardware. A CPU is a hardware component and that cannot be attacked directly by a software program (Virus). So the Virus program first needs to get into the Motherboard firmware (BIOS) to take control of the whole system. But currently there are no malwares known to the world which could do such complicated things. It doesn’t mean that they do not exist. A CPU is at the lowest end of all computer components. It is coded in a different language then your operating system (CPU is coded in Assembly and OS mainly in C++, the virus has to take over loads of parts before it can reach the CPU. Also a CPU isn't a single component. It has two more units inside it called the Arithmetic Logic Unit and the Control Unit. It is basically super complex to code a virus to do so.
+
+Q12. What is the responsibility of dispatcher? 
+Sol.
+
+The dispatcher is the module that gives control of the CPU to the process selected by the short-time scheduler(selects from among the processes that are ready to execute).
+  The function involves :
+  Swithching context
+  Switching to user mode
+  Jumping to the proper location in the user program to restart that program.
+
+
+Q13. What are the applications of real time operating system? 
+Sol.
+
+Real time operating system are known for -
+1.Deterministic- they execute functions in fixed amount of time
+2.Correctness- time at which result produced 
+3.Predictability- all constrints related to timing meet
+
+Application based on classification of real time operating system -
+
+*SOFT RTOS - performance degraded but not destroyed by failure to meet response time constraints.
+Used in Multimedia, interactive video games 
+
+*FIRM RTOS - missing more than few deadline, may lead to catastrophe.
+In robot weed killer
+
+*Hard RTOS- failure to meet single deadlines may lead to catastrophic failure
+In aircraft control system, aviation, nuclear power systems, cheamical plants ,life support system.
+
+
+Q14.What do understand by the term system call? 
+Sol.
+When a program in user mode requires access to RAM or a hardware resource ,it must ask the kernel to provide access to the resource.This is done by system calls,
+When a program makes a system call,the mode is switched from  user mode to kernel mode.This is called context switching. 
+	
+
+Q15. What is the use of Fork and Exec system call? 
+Sol.
+
+Fork
+Fork system call is used to create processes. When a process makes a fork() call an exact copy of the process is created. Now there are two processes one being the parent process and another being the child process.
+The process which called the fork() call is the parent process and the process which is created newly is called child process.
+The child process will be exactly same as parent process. 
+Exec
+Exec() system call is also used to create processes but there is one big difference  between fork() and exec().The fork() creates a new process while preserving the parent process but the exec() call replaces the address space, text segment, data segment etc of the current process with the new process. 
+Exec will replace the contents of the currently running process with the information from a program binary.
+
+
